@@ -72,7 +72,7 @@ class InstallCommandCompanies extends BaseCommand
             $this->call('migrate');
             // then seed data
             $seeder = Database::seeder();
-            $seeder->call('julio101290\boilerplatebackup\Database\Seeds\BoilerplateCompaniesCRUD');
+            $seeder->call('julio101290\boilerplatecompanies\Database\Seeds\BoilerplateCompaniesCRUD');
         } catch (\Exception $e) {
             $this->showError($e);
         }

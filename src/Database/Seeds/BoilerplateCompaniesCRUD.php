@@ -10,7 +10,7 @@ use Myth\Auth\Models\UserModel;
 /**
  * Class BoilerplateSeeder.
  */
-class BoilerplateCompanies extends Seeder {
+class BoilerplateCompaniesCRUD extends Seeder {
 
     /**
      * @var Authorize

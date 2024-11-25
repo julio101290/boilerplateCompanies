@@ -10,7 +10,7 @@ use CodeIgniter\CLI\CLI;
 /**
  * Class InstallCommand.
  */
-class InstallCommandBackup extends BaseCommand
+class InstallCommandCompanies extends BaseCommand
 {
     /**
      * The group the command is lumped under
@@ -18,28 +18,28 @@ class InstallCommandBackup extends BaseCommand
      *
      * @var string
      */
-    protected $group = 'boilerplatebackup';
+    protected $group = 'boilerplatecompanies';
 
     /**
      * The command's name.
      *
      * @var string
      */
-    protected $name = 'boilerplatebackup:installbackup';
+    protected $name = 'boilerplatecompanies:installcompaniescrud';
 
     /**
      * The command's short description.
      *
      * @var string
      */
-    protected $description = 'Db install for basic boilerplate backup data.';
+    protected $description = 'Db install for basic boilerplate CRUD companies data.';
 
     /**
      * The command's usage.
      *
      * @var string
      */
-    protected $usage = 'boilerplatebackup:install';
+    protected $usage = 'boilerplatecompanies:installcompaniescrud';
 
     /**
      * The commamd's argument.
@@ -72,7 +72,7 @@ class InstallCommandBackup extends BaseCommand
             $this->call('migrate');
             // then seed data
             $seeder = Database::seeder();
-            $seeder->call('julio101290\boilerplatebackup\Database\Seeds\BoilerplateBackup');
+            $seeder->call('julio101290\boilerplatebackup\Database\Seeds\BoilerplateCompaniesCRUD');
         } catch (\Exception $e) {
             $this->showError($e);
         }

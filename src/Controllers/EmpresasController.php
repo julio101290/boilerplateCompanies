@@ -7,7 +7,7 @@ use julio101290\boilerplatecompanies\Models\EmpresasModel;
 use App\Models\LogModel;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\UserModel;
-use App\Models\UsuariosempresaModel;
+use julio101290\boilerplatecompanies\Models\UsuariosempresaModel;
 
 class EmpresasController extends BaseController {
 
@@ -65,7 +65,7 @@ class EmpresasController extends BaseController {
         $titulos["regimenesFiscales"] = $regimenesFiscales;
 
         //$data["data"] = $datos;
-        return view('empresas', $titulos);
+        return view('julio101290\boilerplatecompanies\Views\empresas', $titulos);
     }
 
     /**

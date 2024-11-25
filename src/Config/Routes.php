@@ -23,6 +23,10 @@ $routes->group('admin', function ($routes) {
     $routes->post('backups/getBackups', 'BackupsController::getBackups', ['namespace' => 'julio101290\boilerplatebackup\Controllers']);
 
 */
+    
+    $routes->get('empresa/usuariosPorEmpresa/(:any)'
+    , 'EmpresasController::usuariosPorEmpresa/$1'
+    , ['namespace' => 'julio101290\boilerplatecompanies\Controllers']);
 
     $routes->resource('empresas', [
         'filter' => 'permission:empresas-permisos',
@@ -39,9 +43,7 @@ $routes->group('admin', function ($routes) {
     , 'EmpresasController::obtenerEmpresa'
     , ['namespace' => 'julio101290\boilerplatecompanies\Controllers']);
 
-    $routes->get('empresa/usuariosPorEmpresa/(:any)'
-    , 'EmpresasController::usuariosPorEmpresa/$1'
-    , ['namespace' => 'julio101290\boilerplatecompanies\Controllers']);
+    
 
     $routes->post('empresa/activarDesactivar'
     , 'EmpresasController::activarDesactivar'

@@ -12,16 +12,16 @@
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#generales" type="button" role="tab" aria-controls="home" aria-selected="true">Generales</button>
+                        <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#generales" type="button" role="tab" aria-controls="home" aria-selected="true"><?= lang('empresas.tab_generals') ?></button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#datosFacturacion" type="button" role="tab" aria-controls="profile" aria-selected="false">Facturacion</button>
+                        <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#datosFacturacion" type="button" role="tab" aria-controls="profile" aria-selected="false"><?= lang('empresas.tab_invoice') ?></button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-toggle="tab" data-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Logos / Imagenes</button>
+                        <button class="nav-link" id="contact-tab" data-toggle="tab" data-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false"><?= lang('empresas.tab_logos_images') ?></button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="emailsetting-tab" data-toggle="tab" data-target="#emailsettings" type="button" role="tab" aria-controls="emailSettings" aria-selected="false">Configuración de Correo</button>
+                        <button class="nav-link" id="emailsetting-tab" data-toggle="tab" data-target="#emailsettings" type="button" role="tab" aria-controls="emailSettings" aria-selected="false"><?= lang('empresas.tab_email_settings') ?></button>
                     </li>
 
                 </ul>
@@ -32,23 +32,23 @@
 
                         <div class="tab-pane fade show active" id="generales" role="tabpanel" aria-labelledby="generales">
 
-                            <?= $this->include('modulosEmpresas/generalesEmpresa') ?>
+                            <?= $this->include('julio101290\boilerplatecompanies\Views\modulosEmpresas/generalesEmpresa') ?>
 
                         </div>
                         <div class="tab-pane fade" id="datosFacturacion" role="tabpanel" aria-labelledby="datosFacturacion">
 
-                            <?= $this->include('modulosEmpresas/facturacionEmpresa') ?>
+                            <?= $this->include('julio101290\boilerplatecompanies\Views\modulosEmpresas/facturacionEmpresa') ?>
 
                         </div>
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
-                            <?= $this->include('modulosEmpresas/logosEmpresa') ?>
+                            <?= $this->include('julio101290\boilerplatecompanies\Views\modulosEmpresas/logosEmpresa') ?>
 
                         </div>
 
                         <div class="tab-pane fade" id="emailsettings" role="tabpanel" aria-labelledby="contact-tab">
 
-                            <?= $this->include('modulosEmpresas/configuracionCorreo') ?>
+                            <?= $this->include('julio101290\boilerplatecompanies\Views\modulosEmpresas/configuracionCorreo') ?>
 
                         </div>
 

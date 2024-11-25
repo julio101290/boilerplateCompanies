@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal Usuarios Por Empresa</h5>
+                <h5 class="modal-title"><?= lang('usuariosempresa.createEdit') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,8 +15,8 @@
                             <table id="tabla-usuariosEmpresa" class="table table-striped table-hover va-middle tabla-usuariosEmpresa">
                                 <thead>
                                     <tr>
-                                        <th>Usuario</th>
-                                        <th>Acciones</th>
+                                        <th><?= lang('usuariosempresa.fields.idUsuario') ?></th>
+                                        <th><?= lang('empresas.fields.acciones') ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>

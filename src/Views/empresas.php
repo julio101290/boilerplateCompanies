@@ -8,8 +8,8 @@
 <!-- Section content -->
 <?= $this->section('content') ?>
 
-<?= $this->include('modulosEmpresas/modalCapturaEmpresas') ?>
-<?= $this->include('modulosEmpresas/usuariosEmpresaModal') ?>
+<?= $this->include('julio101290\boilerplatecompanies\Views\modulosEmpresas/modalCapturaEmpresas') ?>
+<?= $this->include('julio101290\boilerplatecompanies\Views\modulosEmpresas/usuariosEmpresaModal') ?>
 
 <!-- SELECT2 EXAMPLE -->
 <div class="card card-default">

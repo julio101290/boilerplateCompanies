@@ -4,7 +4,7 @@ namespace julio101290\boilerplatecompanies\Controllers;
 
 use App\Controllers\BaseController;
 use julio101290\boilerplatecompanies\Models\EmpresasModel;
-use julio101290\boilerplatelog\Models\LogModel;
+use App\Models\LogModel;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\UserModel;
 use julio101290\boilerplatecompanies\Models\UsuariosempresaModel;

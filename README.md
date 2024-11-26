@@ -17,11 +17,15 @@ CodeIgniter4 Boilerplatecompanies CRUD MVC contain capture, Name RFC 'TAXID Mexi
 
    	composer require hermawan/codeigniter4-datatables
 
+     	composer require julio101290/boilerplatelog
+
 	composer require julio101290/boilerplatecompanies
 
 ### Run command for migration and seeder
 
-	boilerplatecompanies:installcompaniescrud
+	php spark boilerplatecompanies:installcompaniescrud
+
+ 	php spark boilerplatelog:installlog
 
  ### BaseController.php Config
 

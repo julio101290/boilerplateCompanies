@@ -49,6 +49,11 @@ $routes->group('admin', function ($routes) {
     , 'EmpresasController::activarDesactivar'
     , ['namespace' => 'julio101290\boilerplatecompanies\Controllers']);
 
+    $routes->post('usuarios/getUsuariosEmpresaAjaxSelect2'
+    , 'UsuariosempresaController::getUsuariosEmpresaAjax'
+    , ['namespace' => 'julio101290\boilerplatecompanies\Controllers']
+    );
+
     
 
     //$routes->get('settings', 'SettingsController::index');

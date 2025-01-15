@@ -2,7 +2,7 @@
  namespace  julio101290\boilerplatecompanies\Controllers;
  use App\Controllers\BaseController;
  use julio101290\boilerplatecompanies\Models\{UsuariosempresaModel};
- use App\Models\LogModel;
+ use julio101290\boilerplatelog\Models\LogModel;
  use CodeIgniter\API\ResponseTrait;
  class UsuariosempresaController extends BaseController {
 

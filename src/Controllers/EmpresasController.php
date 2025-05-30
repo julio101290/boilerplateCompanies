@@ -49,9 +49,24 @@ class EmpresasController extends BaseController {
 
 
 
-            $datos = $this->empresas->select('id,nombre,direccion,rfc,telefono,correoElectronico,'
-                            . 'diasEntrega,caja,logo,certificado,archivoKey,contraCertificado,regimenFiscal,razonSocial,codigoPostal,'
-                            . 'CURP,created_at,updated_at')->where('deleted_at', null)->whereIn("id", $empresasID);
+            $datos = $this->empresas->select('id as id'
+                            . ',nombre as nombre'
+                            . ',direccion as direccion'
+                            . ',rfc as rfc'
+                            . ',telefono as telefono'
+                            . ',correoElectronico as correoElectronico'
+                            . ',diasEntrega as diasEntrega'
+                            . ',caja as caja'
+                            . ',logo as logo'
+                            . ',certificado as certificado'
+                            . ',archivoKey as archivoKey'
+                            . ',contraCertificado as contraCertificado'
+                            . ',regimenFiscal as regimenFiscal'
+                            . ',razonSocial as razonSocial'
+                            . ',codigoPostal as codigoPostal'
+                            . ',CURP as CURP'
+                            . ',created_at as created_at'
+                            . ',"updated_at"')->where('deleted_at', null)->whereIn("id", $empresasID);
 
             return \Hermawan\DataTables\DataTable::of($datos)->toJson(true);
         }
@@ -353,10 +368,9 @@ class EmpresasController extends BaseController {
                     ->from("{$tablaUsuariosNombre} u")
                     ->where("u.deleted_at", null)
                     ->groupBy("u.id"); // Agrega esta línea para evitar la repetición de usuarios
-            
         } else {
-            
-             $usuarios = $this->usuarios->select("u.id as id, u.username as username, {$empresa} as idEmpresa")
+
+            $usuarios = $this->usuarios->select("u.id as id, u.username as username, {$empresa} as idEmpresa")
                     ->select("COALESCE((SELECT ue.status
                        FROM {$nombreUsuariosEmpresa} ue
                        WHERE ue.idUsuario = u.id
@@ -368,13 +382,9 @@ class EmpresasController extends BaseController {
                     ->from("{$tablaUsuariosNombre} u")
                     ->where("u.deleted_at", null)
                     ->groupBy("u.id"); // Agrega esta línea para evitar la repetición de usuarios
-            
-            
-            
         }
-        
-        $db->close();
 
+        $db->close();
 
         return \Hermawan\DataTables\DataTable::of($usuarios)->toJson(true);
     }

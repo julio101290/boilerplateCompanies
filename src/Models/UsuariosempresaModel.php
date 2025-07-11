@@ -21,20 +21,18 @@ class UsuariosempresaModel extends Model {
     protected $skipValidation = false;
 
     public function mdlUsuariosPorEmpresa($idEmpresa, $busqueda) {
+        $builder = $this->db->table('usuariosempresa a');
+        $builder->select('b.id, b.firstname, b.lastname, b.username');
+        $builder->join('users b', 'a.idUsuario = b.id');
+        $builder->where('a.status', 'on');
+        $builder->where('a.idEmpresa', $idEmpresa);
+        $builder->groupStart()
+                ->like('b.username', $busqueda)
+                ->orLike('b.firstname', $busqueda)
+                ->orLike('b.lastname', $busqueda)
+                ->groupEnd();
 
-
-        $resultado = $this->db->table('usuariosempresa a, users b')
-                        ->select('b.id,b.firstname,b.lastname,b.username')
-                        ->where('a.idUsuario', 'b.id', FALSE)
-                        ->where('a.status', 'on')
-                        ->where('a.idEmpresa', $idEmpresa)
-                        ->groupStart()
-                        ->like("b.username", $busqueda)
-                        ->orlike("b.firstname", $busqueda)
-                        ->orlike("b.lastname", $busqueda)
-                        ->groupEnd()
-                        ->get()->getResultArray();
-
+        $resultado = $builder->get()->getResultArray();
         return $resultado;
     }
 }

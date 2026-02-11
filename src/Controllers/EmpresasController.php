@@ -49,6 +49,36 @@ class EmpresasController extends BaseController {
 
 
 
+            $request = $this->request->getVar();
+
+            $draw = isset($request['draw']) ? (int) $request['draw'] : 0;
+            $start = isset($request['start']) ? (int) $request['start'] : 0;
+            $length = isset($request['length']) ? (int) $request['length'] : 10;
+            $searchValue = $request['search']['value'] ?? null;
+
+            // Columnas EXACTAS como las usas
+            $columns = [
+                'id',
+                'nombre',
+                'direccion',
+                'rfc',
+                'telefono',
+                'correoElectronico',
+                'diasEntrega',
+                'caja',
+                'logo',
+                'certificado',
+                'archivoKey',
+                'contraCertificado',
+                'regimenFiscal',
+                'razonSocial',
+                'codigoPostal',
+                'CURP',
+                'created_at',
+                'updated_at',
+            ];
+
+            // BASE QUERY (tu mismo select)
             $datos = $this->empresas->select('id as id'
                             . ',nombre as nombre'
                             . ',direccion as direccion'
@@ -66,9 +96,56 @@ class EmpresasController extends BaseController {
                             . ',codigoPostal as codigoPostal'
                             . ',CURP as CURP'
                             . ',created_at as created_at'
-                            . ',"updated_at"')->where('deleted_at', null)->whereIn("id", $empresasID);
+                            . ',updated_at as updated_at')
+                    ->where('deleted_at', null)
+                    ->whereIn("id", $empresasID);
 
-            return \Hermawan\DataTables\DataTable::of($datos)->toJson(true);
+            // TOTAL SIN FILTROS
+            $recordsTotal = $datos->countAllResults(false);
+
+            // SEARCH GLOBAL
+            if (!empty($searchValue)) {
+                $datos->groupStart()
+                        ->like('nombre', $searchValue)
+                        ->orLike('direccion', $searchValue)
+                        ->orLike('rfc', $searchValue)
+                        ->orLike('telefono', $searchValue)
+                        ->orLike('correoElectronico', $searchValue)
+                        ->orLike('razonSocial', $searchValue)
+                        ->orLike('codigoPostal', $searchValue)
+                        ->orLike('CURP', $searchValue)
+                        ->groupEnd();
+            }
+
+            // TOTAL FILTRADO
+            $recordsFiltered = $datos->countAllResults(false);
+
+            // ORDER
+            if (isset($request['order'][0]['column'])) {
+
+                $orderColIndex = (int) $request['order'][0]['column'];
+                $orderDir = strtolower($request['order'][0]['dir'] ?? 'asc') === 'desc' ? 'DESC' : 'ASC';
+
+                if (isset($columns[$orderColIndex])) {
+                    $datos->orderBy($columns[$orderColIndex], $orderDir);
+                }
+            } else {
+                $datos->orderBy('id', 'DESC');
+            }
+
+            // LIMIT
+            if ($length != -1) {
+                $datos->limit($length, $start);
+            }
+
+            $data = $datos->findAll();
+
+            return $this->response->setJSON([
+                        'draw' => $draw,
+                        'recordsTotal' => $recordsTotal,
+                        'recordsFiltered' => $recordsFiltered,
+                        'data' => $data
+            ]);
         }
 
 
